@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      function executionE() {
+      var t = document.getElementById('tab');
+      var v = document.getElementById('tab');
+
+      v.style.display='block';
+
+      t.onclick=function() {
+        v.style.display = 'block';
+      }
+      v.onclick=function() {
+        t.style.display= 'none';
+      }}
+    </script>
+  </head>
+  <body>
+    <div id="댓글" class="">
+      <div id="댓글달기" class="">
+        댓글달기
+      </div>
+
+      <button id="더보기" type="button" name="button" onclick="executionE();"><img src="images/icon.png"></button>
+      <div id="tab" style="display:none;" class="">
+        <div id="content" class="창">
+          <div class="menu">
+            게시물로 이동
+          </div>
+          <div class="menu">
+            Report this feed
+          </div>
+          <div class="menu">
+            Share this feed
+          </div>
+          <div class="menu">
+            Cancel
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

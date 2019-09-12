@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style3.css">
+    <title>OvertheSky(@sky0501)의 Instagram</title>
+
+    <script>
+      function SearchBarExtension() {
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        Cover.style.visibility = 'hidden';
+        Icon.style.visibility = 'visible';
+        Clear.style.visibility = 'visible';
+        Icon.style.left = 10 + 'px';
+        Icon.style.position = "absolute";
+        Icon.style.top = 5 + 'px';
+        document.getElementById('searchbarCore').focus();
+      }
+      var isClearFocused = 0;
+      function ClearGot() {
+        isClearFocused = 1;
+      }
+      function ClearLost() {
+        isClearFocused = 0;
+      }
+
+      function SearchBarOnBlur() {
+        if (isClearFocused == 0) {
+          var InputCore = document.getElementById('searchbarCore')
+          var Cover = document.getElementById('searchbarcover');
+          var Icon = document.getElementById('searchbaricon');
+          var Clear = document.getElementById('searchbarclear');
+          var SearchText = document.getElementById('searchBarText');
+          Cover.style.visibility = 'visible';
+          Clear.style.visibility = 'hidden';
+          Icon.style.left = 0 + 'px';
+          Icon.style.position = "inherit";
+          Icon.style.top = 0 + 'px';
+          if (InputCore.value != "") {
+            SearchText.innerHTML=InputCore.value;
+          }
+          else {
+            SearchText.innerHTML="검색";
+          }
+        }
+      }
+
+      function SearchBarClear() {
+        document.getElementById('searchbarCore').value = "";
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        var SearchText = document.getElementById('searchBarText');
+        Cover.style.visibility = 'visible';
+        Clear.style.visibility = 'hidden';
+        Icon.style.left = 0 + 'px';
+        Icon.style.position = "inherit";
+        Icon.style.top = 0 + 'px';
+        SearchText.innerHTML="검색";
+      }
+
+      function ModalDialogAction(arg) {
+        if (arg == 0) {
+        }
+        /*.............................*/
+        else if (arg == 4) {
+          location.replace('main.html');
+        }
+      }
+
+      function ModalDialogOpen() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "block";
+      }
+
+      function ModalDialogClose() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "none";
+      }
+
+      function ModalDialogOver(mElement) {
+        document.getElementById(mElement).style.backgroundColor="#f0f0f0";
+      }
+
+      function ModalDialogOut(mElement) {
+        document.getElementById(mElement).style.backgroundColor="#fff";
+      }
+
+      function HiddenPopupShow(mElement) {
+        document.getElementById(mElement).style.zIndex="1";
+      }
+      function HiddenPopupOut(mElement) {
+        document.getElementById(mElement).style.zIndex="-1";
+      }
+
+      window.onclick = function(event) {
+        var modalDialog = document.getElementById('modaldialog');
+        if (event.target == modalDialog) {
+          modalDialog.style.display = "none";
+        }
+      }
+
+      function CreateFeed() {
+        var favoritesArr = [13, 5, 66, 74, 23, 64];
+        var commentsArr = [25, 17, 127, 47, 59, 33];
+        var imgArr = ["images/f_sampleimg1.jpg", "images/f_sampleimg2.jpg", "images/f_sampleimg3.jpg", "images/f_sampleimg4.jpg", "images/f_sampleimg5.jpg", "images/f_sampleimg6.jpg"];
+
+        document.getElementById('cntFeeds').innerHTML=imgArr.length;
+
+        for(var j = 0; j < imgArr.length / 3; j++) {
+          var feedSection_id = "feedSection_" + j;
+
+          var fdSec = document.createElement("div");
+          fdSec.setAttribute("id", feedSection_id);
+          fdSec.setAttribute("class", "feedSection");
+
+          document.getElementById('feedParent').appendChild(fdSec);
+
+          for(var i = 0; i < 3; i++) {
+            var feed_id = "feed_" + ((j * 3) + i);
+            var feed_id_hid = "feed_" + ((j * 3) + i) + "_hid"
+
+            var newDiv = document.createElement("div");
+            newDiv.setAttribute("id", feed_id);
+            newDiv.setAttribute("class", "feedDivid");
+            newDiv.setAttribute("onmouseover", "HiddenPopupShow("+"'"+feed_id_hid+"'"+")");
+            newDiv.setAttribute("onmouseout", "HiddenPopupOut("+"'"+feed_id_hid+"'"+")");
+
+            var html ='<a href="#">';
+            html += ' <div class="feedDivid feedDividA">';
+            html += '   <div id='+'"'+feed_id_hid+'"'+' class="hiddenPopup">';
+            html += '     <div class="internalDiv">';
+            html += '       <a style="padding: 0px 28px 0px 0px; margin: 0;">';
+            html += '         <img style="margin-bottom: -6px;" src="images/hid_favorite.png" alt="">';
+            html += '         '+favoritesArr[((j * 3) + i)]+'<span href="#">개</span>';
+            html += '       </a>';
+            html += '        <a style="margin: 0; padding: 0;">';
+            html += '         <img style="margin-bottom: -6px;" src="images/hid_comment.png" alt="">';
+            html += '         '+commentsArr[((j * 3) + i)]+'<span href="#">개</span>';
+            html += '       </a>';
+            html += '     </div>';
+            html += '   </div>';
+            html += '   <div class="feedimgFrame">';
+            if(imgArr[((j * 3) + i)] == undefined) {
+              html += '     <img src="" class="feedImageCore" alt="" decoding="auto" sizes="256px">';
+            }
+            else {
+              html += '     <img src='+'"'+imgArr[((j * 3) + i)]+'"'+' class="feedImageCore" alt="" decoding="auto" sizes="256px">';
+            }
+            html += '   </div>';
+            html += '   <div class="feedimgFrame feedimgSupport"></div>';
+            html += '   </div>';
+            html += '</a>';
+
+            newDiv.innerHTML = html;
+            document.getElementById(feedSection_id).appendChild(newDiv);
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body style="margin: inherit; padding: inherit;">
+    <div id="modaldialog" class="mDialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose()"></span>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li id="md0" class="mDialogList" onmouseover="ModalDialogOver('md0')" onmouseout="ModalDialogOut('md0')" onclick="ModalDialogAction(0)" style="margin-top: 0px;">비밀번호 변경</li>
+            <li id="md1" class="mDialogList" onmouseover="ModalDialogOver('md1')" onmouseout="ModalDialogOut('md1')" onclick="ModalDialogAction(1)">허가된 앱</li>
+            <li id="md2" class="mDialogList" onmouseover="ModalDialogOver('md2')" onmouseout="ModalDialogOut('md2')" onclick="ModalDialogAction(2)">알림</li>
+            <li id="md3" class="mDialogList" onmouseover="ModalDialogOver('md3')" onmouseout="ModalDialogOut('md3')" onclick="ModalDialogAction(3)">공개 범위 및 보안</li>
+            <li id="md4" class="mDialogList" onmouseover="ModalDialogOver('md4')" onmouseout="ModalDialogOut('md4')" onclick="ModalDialogAction(4)">로그아웃</li>
+            <li id="md5" class="mDialogList" onmouseover="ModalDialogOver('md5')" onmouseout="ModalDialogOut('md5')" onclick="ModalDialogClose()">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <section style="min-height: 120%;">
+      <div class="topTableParent">
+        <div class="topTableChild">
+          <div class="topTableSecA">
+            <div class="topTableSecAChild">
+              <a class="topTSecA1" href="feedPage.html"></a>
+              <a class="topTSecA2"></a>
+            </div>
+          </div>
+
+          <div class="topTableSecB">
+            <input type="text" class="topSearchBar" id="searchbarCore" placeholder="검색" value="" onblur="SearchBarOnBlur()">
+            <div class="topSearchBarCov" id="searchbarcover" onclick="SearchBarExtension()">
+              <div class="searchBarCovChild">
+                <span class="searchBarEl1" id="searchbaricon"></span>
+                <span class="searchBarEl2" id="searchBarText">검색</span>
+              </div>
+            </div>
+            <div class="searchBarEl3" id="searchbarclear" onclick="SearchBarClear()" onmouseover="ClearGot()" onmouseout="ClearLost()"></div>
+          </div>
+          <div class="topTableSecC">
+            <div class="rightMenu">
+              <div class="rightBtn">
+                <a class="findPerson" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="accActivity" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="myAccount" href="profileStoryBoard.html"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="Main">
+        <article class="articleTheme">
+          <header class="articleHeader">
+            <div class="profBgImg">
+              <div class="innerProfImg">
+                <div class="coreProf">
+                  <button title="프로필 사진 바꾸기" class="profChgBtn">
+                    <img alt="프로필 사진 바꾸기" class="profChgBtnImg" src="images/icon.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <section class="sectionProfInfo">
+              <div class="profInfoSetting">
+                <h1 style="font-size: 32px; line-height: 40px; font-weight: 200; color: #262626; margin: 0; padding: 0;">sky0501</h1>
+                <a style="color: #003569; text-decoration: none; margin-left: 20px; display: block; padding: 0; cursor: pointer;"href="#">
+                  <span style="display: block; position: relative; margin: 0; padding: 0; border: 0; color: #003569; cursor: pointer;">
+                    <button class="editprofBtn">프로필 편집</button>
+                  </span>
+                </a>
+                <div style="flex-direction: row; flex-shrink: 0; height: 0; margin-left: 5px; margin-right: -10px; display: flex; padding: 0; position: relative;">
+                  <button class="options" onclick="ModalDialogOpen()">옵션</button>
+                </div>
+              </div>
+              <ul class="profStates">
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    게시물
+                    <span id="cntFeeds" style="font-weight: 550;"></span>
+                  </span>
+                </li>
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    팔로워
+                    <span id="cntFollowers" style="font-weight: 550;">94</span>
+                  </span>
+                </li>
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    팔로우
+                    <span id="cntFollows" style="font-weight: 550;">17</span>
+                  </span>
+                </li>
+              </ul>
+              <div class="profDesc">
+                <h1 style="display: inline; font-weight:600; margin: 0; padding: 0; border: 0; vertical-align: baseline; word-wrap: break-word;">
+                  OvertheSky
+                </h1>
+                <span>
+                  I love aeroplanes...
+                </span>
+              </div>
+            </section>
+          </header>
+          <div class="mainTab">
+            <a class="tabA tabB" href="#">
+              <div class="" style="font-size: 12px; font-weight: 600;">
+                게시물
+              </div>
+            </a>
+            <a class="tabA" href="#">
+              <div class="" style="font-size: 12px; font-weight: 600;">
+                저장됨
+              </div>
+            </a>
+          </div>
+          <div>
+            <div id="feedParent" style="flex-direction: column; padding-bottom: 0px; padding-top: 0px;">
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="footerTheme">
+        <div class="divFooter">
+          <nav class="footerNav" role="navigation">
+            <ul class="listWrapper">
+              <li class="itemList">
+                <a class="itemElement" href="/about/us/">Instagram 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://help.instagram.com/">지원</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/developer/">API</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/about/jobs/">채용 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/terms/">약관</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/explore/location/">디렉터리</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/profiles/">프로필</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="">언어</a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="copyright">
+            © 2018 Instagram
+          </span>
+        </div>
+      </footer>
+    </section>
+    <script type="text/javascript">
+      CreateFeed();
+    </script>
+  </body>
+</html>

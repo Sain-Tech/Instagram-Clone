@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>Instagram</title>
+
+    <script type="text/javascript">
+      var currentUser = "sky0501";
+
+      function SearchBarExtension() {
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        Cover.style.visibility = 'hidden';
+        Icon.style.visibility = 'visible';
+        Clear.style.visibility = 'visible';
+        Icon.style.left = 10 + 'px';
+        Icon.style.position = "absolute";
+        Icon.style.top = 5 + 'px';
+        document.getElementById('searchbarCore').focus();
+      }
+      var isClearFocused = 0;
+      function ClearGot() {
+        isClearFocused = 1;
+      }
+      function ClearLost() {
+        isClearFocused = 0;
+      }
+
+      function SearchBarOnBlur() {
+        if (isClearFocused == 0) {
+          var InputCore = document.getElementById('searchbarCore')
+          var Cover = document.getElementById('searchbarcover');
+          var Icon = document.getElementById('searchbaricon');
+          var Clear = document.getElementById('searchbarclear');
+          var SearchText = document.getElementById('searchBarText');
+          Cover.style.visibility = 'visible';
+          Clear.style.visibility = 'hidden';
+          Icon.style.left = 0 + 'px';
+          Icon.style.position = "inherit";
+          Icon.style.top = 0 + 'px';
+          if (InputCore.value != "") {
+            SearchText.innerHTML=InputCore.value;
+          }
+          else {
+            SearchText.innerHTML="검색";
+          }
+        }
+      }
+
+      function SearchBarClear() {
+        document.getElementById('searchbarCore').value = "";
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        var SearchText = document.getElementById('searchBarText');
+        Cover.style.visibility = 'visible';
+        Clear.style.visibility = 'hidden';
+        Icon.style.left = 0 + 'px';
+        Icon.style.position = "inherit";
+        Icon.style.top = 0 + 'px';
+        SearchText.innerHTML="검색";
+      }
+
+      function ModalDialogAction(arg) {
+        if (arg == 0) {
+        }
+        /*.............................*/
+        else if (arg == 4) {
+          location.replace('main.html');
+        }
+      }
+
+      function ModalDialogOpen() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "block";
+      }
+
+      function ModalDialogClose() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "none";
+      }
+
+      function ModalDialogOver(mElement) {
+        document.getElementById(mElement).style.backgroundColor="#f0f0f0";
+      }
+
+      function ModalDialogOut(mElement) {
+        document.getElementById(mElement).style.backgroundColor="#fff";
+      }
+
+      window.onclick = function(event) {
+        var modalDialog = document.getElementById('modaldialog');
+        if (event.target == modalDialog) {
+          modalDialog.style.display = "none";
+        }
+      }
+
+      var commentIndexId = new Array();
+
+      function addComment(message, commentWriter, feedIndex, arg) { //arg=0 is adding comment, arg=1 is leaving timeline message.
+        //alert("you pressed 'enter'" + message);
+        if (message=="") {
+          return;
+        }
+        var comnt = document.createElement("li");
+        comnt.setAttribute("id", "commentList_"+feedIndex+"_"+commentIndexId[feedIndex]);
+        comnt.setAttribute("style", "margin-top: -5px; margin-right:20px;  padding-top: 15px;");
+        //</strong> I am on the sky :)<span style="cursor: pointer; color: #003569; text-decoration: none;"> #aeroplane #travel</span>
+        var contents = '<strong>'+commentWriter+'</strong> ';
+
+        //processing of comment
+        var msgArray = message.split(' ');
+        var linkedContent = '';
+
+        for(var i in msgArray) {
+          i = msgArray[i];
+          if(i.indexOf('#') == 0) {
+            contents += '<span style="cursor: pointer; color: #003569; text-decoration: none;">'+i+' </span>'
+          }
+          else if(i.indexOf('@') == 0) {
+            contents += '<span style="cursor: pointer; color: #003569; text-decoration: none;">'+i+' </span>'
+          }
+          else
+            contents += i+' ';
+        }
+        /////////////////////////
+        if (commentWriter == currentUser && arg == 0) {
+          contents += '<button id="delCommentBtn_'+feedIndex+'_'+commentIndexId[feedIndex]+'" class="deleteCommentBtn" onClick="deleteComment('+commentIndexId[feedIndex]+', '+feedIndex+')"></button>';
+        }
+
+        comnt.innerHTML = contents;
+        document.getElementById('commentAppended_'+feedIndex).appendChild(comnt);
+        commentIndexId[feedIndex]++;
+      }
+
+      function onKeyDown(message, commentWriter, feedIndex, arg) {
+        if(event.ctrlKey && event.keyCode == 13) {
+          document.getElementById('comments_'+feedIndex).value += "\n";
+        }
+        else if (event.keyCode == 13) {
+          addComment(message, commentWriter, feedIndex, arg);
+          setTimeout("eraseCommentArea("+feedIndex+")", 1);
+        }
+      }
+
+      function eraseCommentArea(feedIndex) {
+          document.getElementById('comments_'+feedIndex).value="";
+      }
+
+      function deleteComment(listid, feedIndex) {
+        var parent = document.getElementById("commentAppended_"+feedIndex);
+        var list = document.getElementById("commentList_"+feedIndex+"_"+listid);
+        parent.removeChild(list);
+        commentIndexId[feedIndex]--;
+      }
+
+      function CreateFeed() {
+        var feedWrerName = ["sky0501", "sky0501", "sky0501", "sky0501", "sky0501", "?undefined"];
+        var feedImageParentDir = "images";
+        var feedImageFile = ["f_sampleimg1.jpg", "f_sampleimg2.jpg", "f_sampleimg3.jpg", "f_sampleimg4.jpg", "f_sampleimg5.jpg", "f_sampleimg6.jpg"];
+        var feedTimelineLeave = ["I'm on the sky. :) #travel #aeroplane", "#bb @star_4423", "The Airbus A320's cockpit!", "The #flowers #wonderland.", "Cherry blossom! #awesome!", "Purple Lamborghini Huracan Performante! Thanks for @lamborghini"];
+        var feedUploadedTime = [2, 7, 13, 19, 27];
+        var commentWriter = "sky0501";
+
+        var cmtWriterList = ["홍길동", "최세인", "Apple", "익명사용자", "Microsoft"];
+        var cmtList = ["안녕하세요~~~", "오픈했습니다!", "Hello everyone...what a nice picture! @sky0501", "안녕하세요. 제 유튜브 채널,,,좋아요와 구독버튼 하나씩만 부탁드리겠습니다! #유튜브", "Great! bb"];
+
+        for(var i = 0; i < feedImageFile.length; i++) {
+          commentIndexId[i] = 0;
+
+          var feedDiv = document.createElement("div");
+          feedDiv.setAttribute("style", "flex-direction: column; padding-bottom: 0px; padding-top: 0px; margin-bottom: 64px;")
+
+          var html = '<article class="feedArticle">';
+              html += '    <header class="articleHeader">';
+              html += '      <div class="headerProfile">';
+              html += '        <canvas class="profBorder" width="40" height="40" style="transform: translate(-5px, -5px); position: absolute; top: 0px; left: 0px; width: 40px; height: 40px"></canvas>';
+              html += '        <a class="borderImg" href="" style="width: 30px; height: 30px;"></a>';
+              html += '      </div>';
+              html += '      <div class="headerProfileName">';
+              html += '        <div class="">';
+              html += '          <div class="nameLabelChild">';
+              html += '            <a class="labelCore" href="">'+feedWrerName[i]+'</a>';
+              html += '          </div>';
+              html += '        </div>';
+              html += '      </div>';
+              html += '    </header>';
+              html += '    <div class="articleImgParent">';
+              html += '      <div class="sampleImg" style="background-image: url('+"'"+feedImageParentDir+'/'+feedImageFile[i]+"'"+');">';
+              html += '      </div>';
+              html += '    </div>';
+              html += '    <div class="interactionParent">';
+              html += '      <section class="funcBtn">';
+              html += '        <a class="funcBtnCore" href="" style="background-image: url('+"'images/f_funcBtn_favorite.png'"+');"></a>';
+              html += '        <a class="funcBtnCore" href="" style="background-image: url('+"'images/f_funcBtn_comment.png'"+');"></a>';
+              html += '        <a class="funcBtnCore" href="" style="background-image: url('+"'images/f_funcBtn_save.png'"+'); margin-left: auto; margin-right: -16px;"></a>';
+              html += '      </section>';
+              html += '      <div class="divComments">';
+              html += '        <ul id="commentAppended_'+i+'" style="list-style: none; padding: 0px; margin: -15px 0px 0px 0px; font-size: 14px; font-family: Arial; color: #0e0e0e">';
+              html += '        </ul>';
+              html += '      </div>';
+              html += '      <div style="margin-bottom: 4px;">';
+              html += '        <span style="font-size: 10px; font-family: Arial; color: #999;">'+feedUploadedTime[i]+'일 전</span>';
+              html += '      </div>';
+              html += '      <section class="addComment">';
+              html += '        <form class="addCommentArea">';
+              html += '          <textarea id="comments_'+i+'" aria-label="댓글 달기..." placeholder="댓글 달기..." class="addCommentCore" autocomplete="off" autocorrect="off" onKeyDown="onKeyDown('+"document.getElementById('comments_"+i+"', 0).value"+', '+"'"+commentWriter+"'"+', '+i+', 0);"></textarea>';
+              html += '        </form>';
+              html += '      </section>';
+              html += '      <div class="modalPopupParent">';
+              html += '        <button class="modalPopupBtn" type="button" onClick="ModalDialogOpen()"></button>';
+              html += '      </div>';
+              html += '    </div>';
+              html += '</article>';
+
+          feedDiv.innerHTML = html;
+          document.getElementById('appendedClass').appendChild(feedDiv);
+
+          addComment(feedTimelineLeave[i], commentWriter, i, 1);
+          addComment("이제 댓글을 남기고 삭제할 수 있습니다!", commentWriter, i, 0);
+        }
+        addComment("다른 사용자를 @언급 하거나 #해시태그 를 남겨보세요.", commentWriter, 1, 0);
+        for(var cmt = 0; cmt < cmtWriterList.length; cmt++) {
+          addComment(cmtList[cmt], cmtWriterList[cmt], 0, 0);
+        }
+      }
+    </script>
+  </head>
+  <body style="margin: inherit; padding: inherit;">
+    <div id="modaldialog" class="mDialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose()"></span>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li id="md0" class="mDialogList" onmouseover="ModalDialogOver('md0')" onmouseout="ModalDialogOut('md0')" onclick="ModalDialogAction(0)" style="margin-top: 0px;">게시물로 이동</li>
+            <li id="md1" class="mDialogList" onmouseover="ModalDialogOver('md1')" onmouseout="ModalDialogOut('md1')" onclick="ModalDialogAction(1)">부적절한 콘텐츠 신고</li>
+            <li id="md2" class="mDialogList" onmouseover="ModalDialogOver('md2')" onmouseout="ModalDialogOut('md2')" onclick="ModalDialogAction(2)">퍼가기</li>
+            <li id="md3" class="mDialogList" onmouseover="ModalDialogOver('md3')" onmouseout="ModalDialogOut('md3')" onclick="ModalDialogClose()">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <section>
+      <div class="topTableParent">
+        <div class="topTableChild">
+          <div class="topTableSecA">
+            <div class="topTableSecAChild">
+              <a class="topTSecA1"></a>
+              <a class="topTSecA2"></a>
+            </div>
+          </div>
+
+          <div class="topTableSecB">
+            <input type="text" class="topSearchBar" id="searchbarCore" placeholder="검색" value="" onblur="SearchBarOnBlur()">
+            <div class="topSearchBarCov" id="searchbarcover" onclick="SearchBarExtension()">
+              <div class="searchBarCovChild">
+                <span class="searchBarEl1" id="searchbaricon"></span>
+                <span class="searchBarEl2" id="searchBarText">검색</span>
+              </div>
+            </div>
+            <div class="searchBarEl3" id="searchbarclear" onclick="SearchBarClear()" onmouseover="ClearGot()" onmouseout="ClearLost()"></div>
+          </div>
+          <div class="topTableSecC">
+            <div class="rightMenu">
+              <div class="rightBtn">
+                <a class="findPerson" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="accActivity" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="myAccount" href="profileStoryBoard.html"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="Main">
+        <section class="sectionMain">
+          <div class="feedRoot">
+            <div id="appendedClass" class="">
+
+            </div>
+          </div>
+        </section>
+        <div class="">
+
+        </div>
+      </main>
+
+      <footer class="footerTheme">
+        <div class="divFooter">
+          <nav class="footerNav" role="navigation">
+            <ul class="listWrapper">
+              <li class="itemList">
+                <a class="itemElement" href="/about/us/">Instagram 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://help.instagram.com/">지원</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/developer/">API</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/about/jobs/">채용 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/terms/">약관</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/explore/location/">디렉터리</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/profiles/">프로필</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="">언어</a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="copyright">
+            © 2018 Instagram
+          </span>
+        </div>
+      </footer>
+    </section>
+    <script type="text/javascript">
+      CreateFeed();
+    </script>
+  </body>
+</html>
