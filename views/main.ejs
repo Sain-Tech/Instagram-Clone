@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <title>Instagram</title>
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style1.css">
+    <script src="javascripts/script1.js" charset="utf-8"></script>
+  </head>
+
+  <body class="bodyTheme">
+
+    <div class="topTableTheme">
+      <div class="topTableAnim"></div>
+      <div class="topTableContent">
+        <a class="topTableLink" href="https://www.microsoft.com/en-us/store/apps/instagram/9nblggh5l9xt" role="alert">
+          <section class="topTableSectionA">
+            <p class="topTableTitle">Instagram</p>
+            <p class="topTableCaption">Windows 스토어에서 무료로 다운로드하세요.</p>
+          </section>
+
+          <section class="topTableSectionB">
+            <div class="topTableRightBtn">
+              <strong>받기</strong>
+            </div>
+          </section>
+        </a>
+      </div>
+    </div>
+
+    <main class="mainTheme">
+      <article class="articleTheme">
+        <div class="divPhoneImage">
+          <div class="imageFrame">
+            <img class="insertedImage" src="images/screen1.jpg">
+          </div>
+        </div>
+
+        <div class="divRightPhoneImage">
+
+          <div class="divRightTop">
+            <h1 class="divMainLogo">
+              Instagram
+            </h1>
+            <div class="divFncForm">
+              <form id="mForm" action="/login" class="fncFormTheme" method="POST">
+
+                <h2 class="formCaption1">친구들의 사진과 동영상을 보려면 가입하세요.</h2>
+                <span class="btnSpan">
+                  <button class="btnSpanCore" onclick="CheckInEmail('emailorphone')">
+                    <span class="icoFacebookBtn">
+                    </span>
+                    Facebook으로 로그인
+                  </button>
+                </span>
+                <div class="divOR">
+                  <div class="divider"></div>
+                  <div class="capOR">또는</div>
+                  <div class="divider"></div>
+                </div>
+        
+                <div class="inputBoxBase">
+                  <input class="inputBoxCore" id="emailorphone" name="mEOP" placeholder="휴대폰 번호 또는 이메일 주소"></input>
+                </div>
+                <div class="inputBoxBase">
+                  <input class="inputBoxCore" id="name" name="mName" placeholder="성명"></input>
+                </div>
+                <div class="inputBoxBase">
+                  <input class="inputBoxCore" id="username" name="mUserName" placeholder="사용자 이름" ></input>
+                </div>
+                <div class="inputBoxBase">
+                  <input class="inputBoxCore" id="password" name="mPassword" type="password" placeholder="비밀번호" ></input>
+                </div>
+
+                <div>
+                  <span class="btnSpan">
+                    <button class="btnSpanCore" type="submit" id="signUp" onclick="applyMsg()">
+                      가입
+                    </button>
+                  </span>
+                </div>
+                <p class="msgSignAlert">
+                  <a class="wrongExptxtMsg" id="wrongExp">...<br><br></a>
+                  가입하면 Instagram의
+                  <a class="msgSignAlertStrong "target="_blank" href="/legal/terms/">약관</a>
+                  및
+                  <a class="msgSignAlertStrong "target="_blank "href="/legal/privacy/">개인정보처리방침</a>
+                  에 동의하게 됩니다.
+                </p>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="divRightTop">
+            <p class="capAskAccount">
+              계정이 있으신가요?
+              <a class="capLogin" href="#">로그인</a>
+            </p>
+          </div>
+
+          <div class="divRightBottom">
+            <p class="capDnApp">앱을 다운로드하세요.</p>
+            <div class="appBadge">
+              <a class="badgeGuard" href="https://itunes.apple.com/app/instagram/id389801252?">
+                <img class="badgeImage" src="images/appleBadge.png" alt="App Store에서 이용 가능">
+              </a>
+              <a class="badgeGuard" href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DsignupPage%26utm_medium%3Dbadge">
+                <img class="badgeImage" src="images/googleBadge.png" alt="Google Play에서 이용 가능">
+              </a>
+              <a class="badgeGuard" href="https://www.microsoft.com/en-us/store/apps/instagram/9nblggh5l9xt">
+                <img class="badgeImage" src="images/msBadge.png" alt="Microsoft에서 다운로드">
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </main>
+
+    <footer class="footerTheme">
+      <div class="divFooter">
+        <nav class="footerNav" role="navigation">
+          <ul class="listWrapper">
+            <li class="itemList">
+              <a class="itemElement" href="/about/us/">Instagram 정보</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="https://help.instagram.com/">지원</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/developer/">API</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/about/jobs/">채용 정보</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/legal/terms/">약관</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/explore/location/">디렉터리</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/directory/profiles/">프로필</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+            </li>
+            <li class="itemList">
+              <a class="itemElement" href="">언어</a>
+            </li>
+          </ul>
+        </nav>
+
+        <span class="copyright">
+          © 2018 Instagram
+        </span>
+      </div>
+    </footer>
+
+  </body>
+</html>
