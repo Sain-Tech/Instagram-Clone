@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title></title>
+
+    <script type="text/javascript">
+      function SearchBarExtension() {
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        Cover.style.visibility = 'hidden';
+        Icon.style.visibility = 'visible';
+        Clear.style.visibility = 'visible';
+        Icon.style.left = 10 + 'px';
+        Icon.style.position = "absolute";
+        Icon.style.top = 5 + 'px';
+        document.getElementById('searchbarCore').focus();
+      }
+      var isClearFocused = 0;
+      function ClearGot() {
+        isClearFocused = 1;
+      }
+      function ClearLost() {
+        isClearFocused = 0;
+      }
+
+      function SearchBarOnBlur() {
+        if (isClearFocused == 0) {
+          var InputCore = document.getElementById('searchbarCore')
+          var Cover = document.getElementById('searchbarcover');
+          var Icon = document.getElementById('searchbaricon');
+          var Clear = document.getElementById('searchbarclear');
+          var SearchText = document.getElementById('searchBarText');
+          Cover.style.visibility = 'visible';
+          Clear.style.visibility = 'hidden';
+          Icon.style.left = 0 + 'px';
+          Icon.style.position = "inherit";
+          Icon.style.top = 0 + 'px';
+          if (InputCore.value != "") {
+            SearchText.innerHTML=InputCore.value;
+          }
+          else {
+            SearchText.innerHTML="검색";
+          }
+        }
+      }
+
+      function SearchBarClear() {
+        document.getElementById('searchbarCore').value = "";
+        var Cover = document.getElementById('searchbarcover');
+        var Icon = document.getElementById('searchbaricon');
+        var Clear = document.getElementById('searchbarclear');
+        var SearchText = document.getElementById('searchBarText');
+        Cover.style.visibility = 'visible';
+        Clear.style.visibility = 'hidden';
+        Icon.style.left = 0 + 'px';
+        Icon.style.position = "inherit";
+        Icon.style.top = 0 + 'px';
+        SearchText.innerHTML="검색";
+      }
+
+      function ModalDialogOpen() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "block";
+      }
+
+      function ModalDialogClose() {
+        var modalDialog = document.getElementById('modaldialog');
+        modalDialog.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        var modalDialog = document.getElementById('modaldialog');
+        if (event.target == modalDialog) {
+          modalDialog.style.display = "none";
+        }
+      }
+    </script>
+  </head>
+  <body style="margin: inherit; padding: inherit;">
+    <div id="modaldialog" class="mDialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose()"></span>
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li class="mDialogList" style="margin-top: 0px;">게시물로 이동</li>
+            <li class="mDialogList">부적절한 콘텐츠 신고</li>
+            <li class="mDialogList">퍼가기</li>
+            <li class="mDialogList" onclick="ModalDialogClose()">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <section>
+      <div class="topTableParent">
+        <div class="topTableChild">
+          <div class="topTableSecA">
+            <div class="topTableSecAChild">
+              <a class="topTSecA1"></a>
+              <a class="topTSecA2"></a>
+            </div>
+          </div>
+
+          <div class="topTableSecB">
+            <input type="text" class="topSearchBar" id="searchbarCore" placeholder="검색" value="" onblur="SearchBarOnBlur()">
+            <div class="topSearchBarCov" id="searchbarcover" onclick="SearchBarExtension()">
+              <div class="searchBarCovChild">
+                <span class="searchBarEl1" id="searchbaricon"></span>
+                <span class="searchBarEl2" id="searchBarText">검색</span>
+              </div>
+            </div>
+            <div class="searchBarEl3" id="searchbarclear" onclick="SearchBarClear()" onmouseover="ClearGot()" onmouseout="ClearLost()"></div>
+          </div>
+          <div class="topTableSecC">
+            <div class="rightMenu">
+              <div class="rightBtn">
+                <a class="findPerson" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="accActivity" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="myAccount" href=""></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="Main">
+        <section class="sectionMain">
+          <div class="feedRoot">
+            <div class="">
+              <div style="flex-direction: column; padding-bottom: 0px; padding-top: 0px;">
+                <article class="feedArticle">
+                  <header class="articleHeader">
+                    <div class="headerProfile">
+                      <canvas class="profBorder" width="40" height="40" style="transform: translate(-5px, -5px); position: absolute; top: 0px; left: 0px; width: 40px; height: 40px"></canvas>
+                      <a class="borderImg" href="" style="width: 30px; height: 30px;"></a>
+                    </div>
+                    <div class="headerProfileName">
+                      <div class="">
+                        <div class="nameLabelChild">
+                          <a class="labelCore" href="">OvertheSky</a>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                  <div class="articleImgParent">
+                    <div class="sampleImg">
+                    </div>
+                  </div>
+                  <div class="interactionParent">
+                    <section class="funcBtn">
+                      <a class="funcBtnCore" href="" style="background-image: url('images/f_funcBtn_favorite.png');"></a>
+                      <a class="funcBtnCore" href="" style="background-image: url('images/f_funcBtn_comment.png');"></a>
+                      <a class="funcBtnCore" href="" style="background-image: url('images/f_funcBtn_save.png'); margin-left: auto; margin-right: -16px;"></a>
+                    </section>
+                    <div class="divComments">
+                      <ul style="list-style: none; padding: 0px; margin: -15px 0px 0px 0px; font-size: 14px; font-family: Arial; color: #0e0e0e">
+                        <li style="margin-top: -5px; padding-top: 15px;"><strong>OvertheSky</strong> I'm on the sky :)<span style="cursor: pointer; color: #003569; text-decoration: none;"> #aeroplane #travel</span></li>
+                        <li style="margin-top: -5px; padding-top: 15px;"><strong>GoogleLLC.</strong> How nice! :O</li>
+                        <li style="margin-top: -5px; padding-top: 15px;"><strong>OvertheSky</strong><span style="cursor: pointer; color: #003569; text-decoration: none;"> @GoogleLLC.</span> Thanks! <button class="deleteCommentBtn"></button></li>
+                      </ul>
+                    </div>
+                    <div style="margin-bottom: 4px;">
+                      <span style="font-size: 10px; font-family: Arial; color: #999;">1일 전</span>
+                    </div>
+                    <section class="addComment">
+                      <form class="addCommentArea">
+                        <textarea aria-label="댓글 달기..." placeholder="댓글 달기..." class="addCommentCore" autocomplete="off" autocorrect="off"></textarea>
+                      </form>
+                    </section>
+                    <div class="modalPopupParent">
+                      <button class="modalPopupBtn" type="button" onClick="ModalDialogOpen()"></button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="">
+
+        </div>
+      </main>
+
+      <footer class="footerTheme">
+        <div class="divFooter">
+          <nav class="footerNav" role="navigation">
+            <ul class="listWrapper">
+              <li class="itemList">
+                <a class="itemElement" href="/about/us/">Instagram 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://help.instagram.com/">지원</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/developer/">API</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/about/jobs/">채용 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/terms/">약관</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/explore/location/">디렉터리</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/profiles/">프로필</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="">언어</a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="copyright">
+            © 2018 Instagram
+          </span>
+        </div>
+      </footer>
+    </section>
+  </body>
+</html>
