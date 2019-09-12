@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style3.css">
+    <title>OvertheSky(@sky0501)의 Instagram</title>
+    <script src="script3.js" charset="utf-8"></script>
+  </head>
+
+  <body style="margin: inherit; padding: inherit;">
+    <div id="modaldialog" class="mDialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose('modaldialog')"></span>
+        <ul style="list-style: none; margin: 0; padding: 0; flex-direction: column; align-items: center; display: flex;">
+            <li id="md0" class="mDialogList" onmouseover="ModalDialogOver('md0')" onmouseout="ModalDialogOut('md0')" onclick="ModalDialogAction(0)" style="margin-top: 0px;">비밀번호 변경</li>
+            <li id="md1" class="mDialogList" onmouseover="ModalDialogOver('md1')" onmouseout="ModalDialogOut('md1')" onclick="ModalDialogAction(1)">허가된 앱</li>
+            <li id="md2" class="mDialogList" onmouseover="ModalDialogOver('md2')" onmouseout="ModalDialogOut('md2')" onclick="ModalDialogAction(2)">알림</li>
+            <li id="md3" class="mDialogList" onmouseover="ModalDialogOver('md3')" onmouseout="ModalDialogOut('md3')" onclick="ModalDialogAction(3)">공개 범위 및 보안</li>
+            <li id="md4" class="mDialogList" onmouseover="ModalDialogOver('md4')" onmouseout="ModalDialogOut('md4')" onclick="ModalDialogAction(4)">로그아웃</li>
+            <li id="md5" class="mDialogList" onmouseover="ModalDialogOver('md5')" onmouseout="ModalDialogOut('md5')" onclick="ModalDialogClose('modaldialog')">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modaldialog2" class="mDialog" role="dialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose('modaldialog2')"></span>
+        <ul style="list-style: none; margin: 0; padding: 0; flex-direction: column; align-items: center; display: flex;">
+            <li id="md6" class="mDialogList" onmouseover="ModalDialogOver('md6')" onmouseout="ModalDialogOut('md6')" onclick="ModalDialogAction(5)" style="margin-top: 0px;">프로필 사진 바꾸기</li>
+            <li id="md7" class="mDialogList" onmouseover="ModalDialogOver('md7')" onmouseout="ModalDialogOut('md7')" onclick="ModalDialogAction(6)">현재 사진 삭제</li>
+            <li id="md8" class="mDialogList" onmouseover="ModalDialogOver('md8')" onmouseout="ModalDialogOut('md8')" onclick="ModalDialogAction(7)">사진 찍기</li>
+            <li id="md9" class="mDialogList" onmouseover="ModalDialogOver('md9')" onmouseout="ModalDialogOut('md9')" onclick="ModalDialogAction(8)">사진 업로드</li>
+            <li id="md10" class="mDialogList" onmouseover="ModalDialogOver('md10')" onmouseout="ModalDialogOut('md10')" onclick="ModalDialogClose('modaldialog2')">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="feedModalDialog" class="mInherit mFeedDialog" role="dialog" style="display:none;">
+      <div class="mInherit mInheritA fdlgPA">
+        <div class="mInherit mInheritA fdlgPSA">
+          <div class="mInherit mInheritA fdlgPSB"></div>
+        </div>
+      </div>
+
+      <div class="mInherit mInheritA fdlgPB">
+        <div class="mInherit fdlgCNPA">
+          <article class="mInherit mInheritA fdlgArticle">
+            <header class="mInherit fdlgCnHdP">
+              <div class="mInherit mInheritA fdlgCnProfImgP">
+                <canvas class="fdlgHdCanvas" width="50" height="50" style="transform: translate(-5px, -5px); position: absolute; top: 0px; left: 0px; width: 50px; height: 50px;"></canvas>
+                <a class="fdlgHdImgP" style="width: 40px; height: 40px;"><img class="fdlgHdImgCore" src="images/icon.png"></a>
+              </div>
+
+              <div class="mInherit fdlgProfNmP">
+                <a href="" style="font-size: 14px; color: #262626; flex-grow: 0; flex-shrink: 1; text-decoration: none; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
+                  sky0501
+                </a>
+              </div>
+            </header>
+
+            <div class="mInherit mInheritA fdlgCnImgP">
+              <div>
+                <div class="mInherit mInheritA fdlgCnFdImgPA">
+                  <div class="mInherit mInheritA fdlgCnFdImgCA">
+                    <img id="feedModalImage" class="fdlgCnfdImgCore" decoding="auto" sizes="470px" src="images/f_sampleimg1.jpg" alt="">
+                  </div>
+
+                  <div class="mInherit mInheritA fdlgCnFdImgSupport"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mInherit fdlgCnCnP">
+              <section class="mInherit mInheritA fdInteractionP">
+                <input id="btnFavorite_" class="funcBtnCore" onClick="ActionFavorite('+i+')" type="checkbox"><label for="btnFavorite_"></label>
+               <a class="funcBtnCore" onclick="document.getElementById('cmtInput').focus();" style="background-image: url('images/f_funcBtn_comment.png'); cursor: pointer;"></a>
+               <a class="funcBtnCore" href="" style="background-image: url('images/f_funcBtn_save.png'); margin-left: auto; margin-right: -16px; float: right"></a>
+              </section>
+
+              <section class="mInherit mInheritA fdFirstFavoriteP">
+                <div class="mInherit mInheritA" style="flex-grow: 1; flex-shrink: 1; color: #262626; display: block; position: relative; font-size: 14px">
+                  가장 먼저
+                  <a href="#" style="color: #003569; text-decoration: none;">좋아요</a>를 눌러보세요.
+                </div>
+              </section>
+
+              <div class="mInherit mInheritA fdCommentListP">
+                <ul class="fdCmtList">
+                  <li class="fdCmtItem">
+                    <a href="#" class="fdCmtItemTitle" title="sky0501">sky0501</a>
+                    <span><span>테스트</span></span>
+                  </li>
+
+                  <li class="fdCmtItem">
+                    <button class="fdDelCmt" title="댓글 삭제"></button>
+                    <a href="#" class="fdCmtItemTitle" title="sky0501">sky0501</a>
+                    <span><span>Test................comment......................</span></span>
+                  </li>
+
+                  <li class="fdCmtItem">
+                    <a href="#" class="fdCmtItemTitle" title="Microsoft">Microsoft</a>
+                    <span>
+                      <span>Test comment...not me...........</span>
+                      <a href="#" style="color: #003569; text-decoration: none; margin: 0; padding: 0;">#hashtag</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mInherit mInheritA fdPostDateP">
+                <a class="fdPostDateC" href="">
+                  <time class="fdPastDateCore" datetime="2018-04-28T09:05:54.000Z" title="2018년 4월 28일">4월 28일</time>
+                </a>
+              </div>
+
+              <section class="mInherit mInheritA mAddCommentP">
+                <form style="align-items: center; flex-direction: row; flex-shrink: 1; position: relative; display: flex; flex-grow: 1; margin: 0; padding: 0; font: inherit; vertical-align: baseline; color: #999;">
+                  <textarea id="cmtInput" aria-label="Add a comment..." placeholder="Add a comment..." class="fdAddCmtCore" autocomplete="off" autocorrect="off" style="height: 18px;"></textarea>
+                </form>
+              </section>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="fdlgClBtn" onclick="ModalDialogClose('feedModalDialog')">
+        닫기
+      </button>
+    </div>
+
+    <section style="min-height: 120%;">
+      <div id="tTableP" class="topTableParent">
+        <div id="tTableC" class="topTableChild">
+          <div class="topTableSecA">
+            <div class="topTableSecAChild">
+              <a id="mLogoFull" class="topTSecA1" href="feedPage.html"></a>
+              <a id="mLogoShort" class="topTSecA2" href="feedPage.html"></a>
+            </div>
+          </div>
+
+          <div class="topTableSecB">
+            <input type="text" class="topSearchBar" id="searchbarCore" placeholder="검색" value="" onblur="SearchBarOnBlur()">
+            <div class="topSearchBarCov" id="searchbarcover" onclick="SearchBarExtension()">
+              <div class="searchBarCovChild">
+                <span class="searchBarEl1" id="searchbaricon"></span>
+                <span class="searchBarEl2" id="searchBarText">검색</span>
+              </div>
+            </div>
+            <div class="searchBarEl3" id="searchbarclear" onclick="SearchBarClear()" onmouseover="ClearGot()" onmouseout="ClearLost()"></div>
+          </div>
+          <div class="topTableSecC">
+            <div class="rightMenu">
+              <div class="rightBtn">
+                <a class="findPerson" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="accActivity" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="myAccount" href="profileStoryBoard.html"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="Main">
+        <article class="articleTheme">
+          <header class="articleHeader">
+            <div class="profBgImg">
+              <div class="innerProfImg">
+                <div class="coreProf">
+                  <button title="프로필 사진 바꾸기" class="profChgBtn" onclick="ModalDialogOpen('modaldialog2')">
+                    <img alt="프로필 사진 바꾸기" class="profChgBtnImg" src="images/icon.png">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <section class="sectionProfInfo">
+              <div class="profInfoSetting">
+                <h1 style="font-size: 32px; line-height: 40px; font-weight: 200; color: #262626; margin: 0; padding: 0;">sky0501</h1>
+                <a style="color: #003569; text-decoration: none; margin-left: 20px; display: block; padding: 0; cursor: pointer;"href="#">
+                  <span style="display: block; position: relative; margin: 0; padding: 0; border: 0; color: #003569; cursor: pointer;">
+                    <button class="editprofBtn">프로필 편집</button>
+                  </span>
+                </a>
+                <div style="flex-direction: row; flex-shrink: 0; height: 0; margin-left: 5px; margin-right: -10px; display: flex; padding: 0; position: relative;">
+                  <button class="options" onclick="ModalDialogOpen('modaldialog')">옵션</button>
+                </div>
+              </div>
+              <ul class="profStates">
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    게시물
+                    <span id="cntFeeds" style="font-weight: 550;"></span>
+                  </span>
+                </li>
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    팔로워
+                    <span id="cntFollowers" style="font-weight: 550;">94</span>
+                  </span>
+                </li>
+                <li style="margin-left: 0; font-size: 16px; margin-right: 40px; border: 0; font: inherit; display: list-item; color: #262626;">
+                  <span>
+                    팔로우
+                    <span id="cntFollows" style="font-weight: 550;">17</span>
+                  </span>
+                </li>
+              </ul>
+              <div class="profDesc">
+                <h1 style="display: inline; font-weight:600; margin: 0; padding: 0; border: 0; vertical-align: baseline; word-wrap: break-word;">
+                  OvertheSky
+                </h1>
+                <span>
+                  I love aeroplanes...
+                </span>
+              </div>
+            </section>
+          </header>
+          <div class="mainTab">
+            <a class="tabA tabB" href="#">
+              <div class="" style="font-size: 12px; font-weight: 600;">
+                게시물
+              </div>
+            </a>
+            <a class="tabA" href="#">
+              <div class="" style="font-size: 12px; font-weight: 600;">
+                저장됨
+              </div>
+            </a>
+          </div>
+          <div>
+            <div id="feedParent" style="flex-direction: column; padding-bottom: 0px; padding-top: 0px;">
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="footerTheme">
+        <div class="divFooter">
+          <nav class="footerNav" role="navigation">
+            <ul class="listWrapper">
+              <li class="itemList">
+                <a class="itemElement" href="/about/us/">Instagram 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://help.instagram.com/">지원</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/developer/">API</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/about/jobs/">채용 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/terms/">약관</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/explore/location/">디렉터리</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/profiles/">프로필</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="">언어</a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="copyright">
+            © 2018 Instagram
+          </span>
+        </div>
+      </footer>
+    </section>
+    <script type="text/javascript">
+      CreateFeed();
+    </script>
+  </body>
+</html>

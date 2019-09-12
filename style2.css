@@ -1,0 +1,1090 @@
+<style media="screen">
+  .dummy {
+  }
+
+  .htmlMain {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  .attr1 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .topTableParent {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    transition: height .2s ease-in-out;
+    height: 77px;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    opacity: 0.98;
+  }
+
+  @keyframes TopTableShadowIn {
+    0% {box-shadow: none;}
+    100% {box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1333);}
+  }
+
+  .TopTableShadowIn {
+    animation-duration: .2s;
+    animation-name: TopTableShadowIn;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes TopTableShadowOut {
+    100% {box-shadow: none;}
+    0% {box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1333);}
+  }
+
+  .TopTableShadowOut {
+    animation-duration: .2s;
+    animation-name: TopTableShadowOut;
+    animation-fill-mode: backwards;
+  }
+
+  .topTableChild {
+    display: flex;
+    flex-direction: row;
+    height: 77px;
+    justify-content: center;
+    padding: 26px 40px;
+    transition: height .2s ease-in-out;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    vertical-align: baseline;
+    opacity: 0.9;
+  }
+
+  .topTableSecA {
+    flex: 1 9999 0%;
+    min-width: 40px;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .topTableSecAChild {
+    margin-right: 12px;
+    margin-top: -4px;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 0 0 0 38px;
+    vertical-align: baseline;
+  }
+
+  .topTSecA1 {
+    color: #003569;
+    text-decoration: none;
+
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+
+    display: block;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+
+    background-position: 0px 0px;
+    height: 35px;
+    width: 176px;
+
+    background-image: url("images/f_top_logo_full.png");
+    background-repeat: no-repeat;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+
+    cursor: pointer;
+  }
+
+  .topTSecA2 {
+    color: #003569;
+    text-decoration: none;
+
+    top: 4px;
+    position: absolute;
+    transition: opacity .2s ease-in-out;
+
+    pointer-events: none;
+    opacity: 0;
+
+    display: block;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+
+    background-image: url("images/f_top_logo_min.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    height: 30px;
+    width: 30px;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+
+    cursor: pointer;
+
+  }
+
+  .topTableSecB {
+    flex: 0 1 auto;
+    min-width: 125px;
+    width: 215px;
+    height: 28px;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px 0 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .topSearchBar {
+    border: solid 1px #dbdbdb;
+    border-radius: 3px;
+    color: #262626;
+    font-size: 14px;
+    outline: 0;
+    padding: 3px 10px 1px 26px;
+    z-index: 2;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    line-height: 18px;
+
+    background-color: white;
+    cursor: text;
+
+    font-family: Arial;
+  }
+
+  .topSearchBarCov {
+    justify-content: center;
+    border: solid 1px #dbdbdb;
+
+    background: #fafafa;
+
+    font-size: 14px;
+    border-radius: 3px;
+    color: #999;
+    cursor: text;
+    font-weight: 300;
+    left: 0;
+    padding: 7px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    z-index: 2;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    vertical-align: baseline;
+
+    visibility: visible;
+  }
+
+  .searchBarCovChild {
+    display: inline;
+    left: -5px;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+
+    color: #999;
+    cursor: text;
+    text-align: center;
+  }
+
+  .searchBarEl1 {
+    margin-right: 3px;
+    vertical-align: baseline;
+
+    display: inline-block;
+
+    background-position: 0px 0px;
+    height: 10px;
+    width: 10px;
+
+    background-image: url("images/f_searchbar_logo.png");
+    background-repeat: no-repeat;
+
+    padding: 0;
+    border: 0;
+
+    color: #999;
+    cursor: text;
+    text-align: center;
+  }
+
+  .searchBarEl2 {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    white-space: nowrap;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    color: #999;
+    cursor: text;
+    text-align: center;
+  }
+
+  .searchBarEl3 {
+    z-index: 3;
+    right: 6px;
+    top: 4px;
+
+    position: absolute;
+
+    background-image: url("images/f_searchbar_clear.png");
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 20px;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+
+    cursor: default;
+    visibility: hidden;
+  }
+
+  .topTableSecC {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1 0 0%;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .rightMenu {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .rightBtn {
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 32px 0 0;
+    position: relative;
+
+    vertical-align: baseline;
+
+    white-space: nowrap;
+  }
+
+  .findPerson {
+    color: #003569;
+    text-decoration: none;
+
+    display: block;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+
+    background-image: url("images/f_find_person.png");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+
+    cursor: pointer;
+  }
+
+  .accActivity {
+    color: #003569;
+    text-decoration: none;
+
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+
+    background-image: url("images/f_account_activity.png");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+
+    margin: 0 0 0 0;
+    padding: 0;
+    vertical-align: baseline;
+  }
+
+  .myAccount {
+    color: #003569;
+    text-decoration: none;
+
+    display: block;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+
+    background-image: url("images/f_my_account.png");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+
+    margin: 0 0 0 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+
+    cursor: pointer;
+  }
+
+  .Main {
+    background-color: #fafafa;
+
+    flex-grow: 1;
+    order: 4;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 77px 0 0 0;
+    position: relative;
+  }
+
+  .sectionMain {
+    padding-top: 60px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    max-width: 935px;
+
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    vertical-align: baseline;
+
+    justify-content: center;
+  }
+
+  .feedRoot {
+    float: left;
+    margin: 0;
+    max-width: 616px;
+    width: 100%;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .divd {
+    height: 0;
+    max-width: 293px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+  }
+
+  .rightRoot {
+    height: 100vh;
+    margin-bottom: 30px;
+    padding: 0;
+    top: 60px;
+
+    max-width: 293px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    vertical-align: baseline;
+  }
+
+  .feedArticle {
+    margin-bottom: 0;
+
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+
+    background-color: #fff;
+    margin-left: -1px;
+    margin-right: -1px;
+
+    padding: 0;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+
+    vertical-align: baseline;
+
+    animation: articlePopOut .2s forwards;
+  }
+
+  .feedArticle:hover {
+    animation: articlePopUp .2s forwards;
+  }
+
+  @keyframes articlePopUp {
+    0% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    100% {
+      transform: scale(1.02);
+      box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+
+  @keyframes articlePopOut {
+    100% {
+      transform: scale(1);
+      box-shadow: none;
+    }
+    0% {
+      transform: scale(1.02);
+      box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+
+  .articleHeader {
+    border-bottom: 1px solid #efefef;
+
+    height: 60px;
+    padding: 16px;
+    align-items: center;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .headerProfile {
+    align-self: center;
+    display: block;
+    flex: none;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .profBorder {
+    user-select: none;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  .borderImg {
+    color: #003569;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    background-color: #fafafa;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: block;
+    flex: 0 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    background-image: url("images/icon.png");
+    background-repeat: no-repeat;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+  }
+
+  .headerProfileName {
+    align-items: flex-start;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 12px;
+    overflow: hidden;
+
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .nameLabelChild {
+    align-items: center;
+    flex-direction: row;
+    max-width: 100%;
+    overflow: auto;
+    flex-grow: 1;
+
+    flex-shrink: 1;
+
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .labelCore {
+    color: #262626;
+    flex-grow: 0;
+
+    flex-shrink: 1;
+
+    text-decoration: none;
+
+    font-weight: 600;
+    font-size: 14px;
+    font-family: Arial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+    margin-left: -5px;
+
+    border: 0;
+    vertical-align: baseline;
+
+    cursor: pointer;
+  }
+
+  .articleImgParent {
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .sampleImg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #efefef;
+
+    width: 614px;
+    height: 614px;
+  }
+
+  .interactionParent {
+    padding: 0 16px;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .funcBtn {
+    margin-top: 12px;
+
+    flex-direction: row;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    padding: 0;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .funcBtnCore {
+    padding: 8px;
+    margin: 0;
+
+    width: 24px;
+    height: 24px;
+
+    background-repeat: no-repeat;
+  }
+
+  .divComments {
+    margin-bottom: 4px;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+    overflow: auto;
+
+    margin-top: -5px;
+    padding-top: 5px;
+
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+
+    vertical-align: baseline;
+
+    font-family: Arial;
+  }
+
+  .addComment {
+    padding-right: 26px;
+    margin-top: 4px;
+
+    border-top: 1px solid #efefef;
+    color: #999;
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 18px;
+    min-height: 56px;
+    justify-content: center;
+    padding: 16px 0;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    vertical-align: baseline;
+  }
+
+  .addCommentArea {
+    align-items: center;
+    flex-direction: row;
+    flex-shrink: 1;
+    position: relative;
+
+    display: flex;
+    flex-grow: 1;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+
+    color: #999;
+  }
+
+  .addCommentCore {
+    background: 0 0;
+    border: 0;
+    color: #262626;
+    font-size: inherit;
+    height: 18px;
+    max-height: 80px;
+    outline: 0;
+    padding: 0;
+    resize: none;
+
+    display: flex;
+    flex-grow: 1;
+
+    font-family: Arial;
+    line-height: 18px;
+
+    flex-direction: column;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .deleteCommentBtn {
+    float: right;
+
+    background-color: transparent;
+    background-image: url("images/f_delete.png");
+    background-repeat: no-repeat;
+
+    min-width: 14px;
+    min-height: 14px;
+
+    margin-right: -20px;
+    margin-left: 1px;
+    margin-top: 1px;
+    border: 0;
+  }
+
+  .modalPopupParent {
+    right: 18px;
+    bottom: 0;
+    height: 52px;
+    top: auto;
+    justify-content: center;
+    position: absolute;
+
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+  }
+
+  .modalPopupBtn {
+    background-color: transparent;
+    background-image: url("images/f_modal_popup_btn.png");
+    background-repeat: no-repeat;
+
+    width: 16px;
+    height: 16px;
+
+    margin: 6px;
+    padding: 0;
+    border: 0;
+  }
+
+  .mDialog {
+    display: none;
+    position: fixed;
+    padding-top: 200px;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.5);
+
+    align-items: stretch;
+    box-sizing: border-box;
+    flex-direction: column;
+    flex-shrink: 0;
+
+    vertical-align: center;
+  }
+
+  .mDialogContent {
+    background-color: transparent;
+    margin: auto;
+    padding: 10px;
+    border: 0 solid #888;
+    width: 10%;
+  }
+
+  .mDialogList {
+    border: 1px solid #dbdbdb;
+    background-color: white;
+    width: 500px;
+    height: 35px;
+    text-align: center;
+    padding-top: 15px;
+    margin: -1px;
+
+    color: #262626;
+    font-weight: 400;
+
+    cursor: pointer;
+  }
+
+  .footerTheme {
+    background-color: #fafafa;
+    order: 5;
+    padding: 0 20px;
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .divFooter {
+    max-width: 935px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 38px 0;
+    font-family: '맑은 고딕';
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: uppercase;
+    width: 100%;
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .footerNav {
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  .copyright {
+    color: #999;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    text-transform: uppercase;
+  }
+
+  .listWrapper {
+    flex-grow: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    text-transform: uppercase;
+  }
+
+  .itemList {
+    display: inline-block;
+    margin-bottom: 7px;
+    margin-right: 10px;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    text-transform: uppercase;
+  }
+
+  .itemElement {
+    color: #003569;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+
+  .fdDelCmt {
+    background: 0 0;
+    border: 0;
+    color: #c7c7c7;
+    cursor: pointer;
+    float: right;
+    font-size: inherit;
+    height: 16px;
+    line-height: inherit;
+    margin-left: 10px;
+    overflow: hidden;
+    padding: 0;
+    width: 1em;
+  }
+
+  .fdDelCmt::before {
+    content: '\2715';
+    display: block;
+  }
+
+  .fdCmtList {
+    flex-grow: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 14px;
+    vertical-align: baseline;
+  }
+
+  .fdCmtItemTitle {
+    color: #262626;
+    text-decoration: none;
+    margin-right: .3em;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 5px;
+    margin-left: -5px;
+    border: 0;
+    vertical-align: baseline;
+    word-wrap: break-word;
+  }
+
+  .fdCmtItem {
+    overflow: hidden;
+    padding-bottom: 6px;
+    position: relative;
+    word-wrap: break-word;
+    margin-top: -5px;
+    padding-top: 5px;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  input[type=checkbox] { display:none; }
+  input[type=checkbox] + label {
+    padding: 8px;
+    margin: -8px 0 0 0;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    cursor: pointer;
+    background: url('images/f_funcBtn_favorite.png') left/24px no-repeat;
+  }
+  input[type=checkbox]:checked +label {
+    background-image: url('images/f_funcBtn_favorite_in.png');
+    animation: bounce .2s ease-in-out;
+  }
+
+  @keyframes bounce {
+    0% {transform: scale(1.0);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1.0);}
+  }
+
+  </style>

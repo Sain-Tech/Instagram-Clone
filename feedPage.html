@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class="htmlMain">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>Instagram</title>
+    <script src="script2.js" charset="utf-8"></script>
+  </head>
+  <body style="margin: inherit; padding: inherit;">
+    <div id="modaldialog" class="mDialog">
+      <div class="mDialogContent">
+        <span onclick="ModalDialogClose()"></span>
+        <ul style="list-style: none; margin: 0; padding: 0; flex-direction: column; align-items: center; display: flex;">
+            <li id="md0" class="mDialogList" onmouseover="ModalDialogOver('md0')" onmouseout="ModalDialogOut('md0')" onclick="ModalDialogAction(0)" style="margin-top: 0px;">게시물로 이동</li>
+            <li id="md1" class="mDialogList" onmouseover="ModalDialogOver('md1')" onmouseout="ModalDialogOut('md1')" onclick="ModalDialogAction(1)">부적절한 콘텐츠 신고</li>
+            <li id="md2" class="mDialogList" onmouseover="ModalDialogOver('md2')" onmouseout="ModalDialogOut('md2')" onclick="ModalDialogAction(2)">퍼가기</li>
+            <li id="md3" class="mDialogList" onmouseover="ModalDialogOver('md3')" onmouseout="ModalDialogOut('md3')" onclick="ModalDialogClose('modaldialog')">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="modalDelComment" class="mDialog">
+      <div class="mDialogContent" style="margin-top: 150px">
+        <span onclick="ModalDialogClose('modalDelComment')"></span>
+        <ul style="list-style: none; margin: 0; padding: 0; flex-direction: column; align-items: center; display: flex;">
+            <li id="md4" class="mDialogList" onmouseover="ModalDialogOver('md4')" onmouseout="ModalDialogOut('md4')" onclick="ModalDialogAction(3)" style="margin-top: 0px; color:#f00; font-weight: 600; border-top-left-radius: 16px; border-top-right-radius: 16px;">댓글 삭제</li>
+            <li id="md5" class="mDialogList" onmouseover="ModalDialogOver('md5')" onmouseout="ModalDialogOut('md5')" onclick="ModalDialogClose('modalDelComment')" style="border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;">취소</li>
+        </ul>
+      </div>
+    </div>
+
+    <section>
+      <div id="tTableP" class="topTableParent">
+        <div id="tTableC" class="topTableChild">
+          <div class="topTableSecA">
+            <div class="topTableSecAChild">
+              <a id="mLogoFull" class="topTSecA1"></a>
+              <a id="mLogoShort" class="topTSecA2"></a>
+            </div>
+          </div>
+
+          <div class="topTableSecB">
+            <input type="text" class="topSearchBar" id="searchbarCore" placeholder="검색" value="" onblur="SearchBarOnBlur()">
+            <div class="topSearchBarCov" id="searchbarcover" onclick="SearchBarExtension()">
+              <div class="searchBarCovChild">
+                <span class="searchBarEl1" id="searchbaricon"></span>
+                <span class="searchBarEl2" id="searchBarText">검색</span>
+              </div>
+            </div>
+            <div class="searchBarEl3" id="searchbarclear" onclick="SearchBarClear()" onmouseover="ClearGot()" onmouseout="ClearLost()"></div>
+          </div>
+          <div class="topTableSecC">
+            <div class="rightMenu">
+              <div class="rightBtn">
+                <a class="findPerson" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="accActivity" href=""></a>
+              </div>
+              <div class="rightBtn">
+                <a class="myAccount" href="profileStoryBoard.html"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="Main">
+        <section class="sectionMain">
+          <div class="feedRoot">
+            <div id="appendedClass" class="">
+
+            </div>
+          </div>
+        </section>
+        <div class="">
+
+        </div>
+      </main>
+
+      <footer class="footerTheme">
+        <div class="divFooter">
+          <nav class="footerNav" role="navigation">
+            <ul class="listWrapper">
+              <li class="itemList">
+                <a class="itemElement" href="/about/us/">Instagram 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://help.instagram.com/">지원</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://blog.instagram.com/">블로그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="https://instagram-press.com/">홍보 센터</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/developer/">API</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/about/jobs/">채용 정보</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/privacy/">개인정보처리방침</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/legal/terms/">약관</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/explore/location/">디렉터리</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/profiles/">프로필</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="/directory/hashtags/">해시태그</a>
+              </li>
+              <li class="itemList">
+                <a class="itemElement" href="">언어</a>
+              </li>
+            </ul>
+          </nav>
+
+          <span class="copyright">
+            © 2018 Instagram
+          </span>
+        </div>
+      </footer>
+    </section>
+    <script type="text/javascript">
+      CreateFeed();
+    </script>
+  </body>
+</html>
